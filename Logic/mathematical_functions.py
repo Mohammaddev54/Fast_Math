@@ -1,22 +1,29 @@
- 
 from random import randint, uniform, choice
 
 mathemtical_operations = ['+', '-', '*', '/', '%']
 
 def random_integer()->int:
-    return randint(0, 9)
+    return randint(1, 10)
 
 
 def random_float()->float:
-    return round(uniform(0, 9), 2)
+    return round(uniform(1, 10), 2)
 
 
 def random_math_operation()->str:
     return choice(mathemtical_operations)
 
 
-def random_math_expression()->str:
-    return f"{random_integer()} {random_math_operation()} {random_integer()}"
+def random_math_expression(difficulty:str)->str:
+    if difficulty == "easy":
+        return f"{random_integer()} {random_math_operation()} {random_integer()}"
+    elif difficulty == "medium":
+        return f"({random_integer()} {random_math_operation()} {random_integer()}) {random_math_operation}\
+            ({random_integer()} {random_math_operation()} {random_integer()})"
+    elif difficulty == "hard":
+        return f"{random_integer()}**2 * {random_integer()} + {random_integer()}"
+    else:
+        return f"0"
 
 
 def evaluate(expression:str):

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-from mathematical_functions import *
+from .mathematical_functions import *
 
 correct = 0
 wrong = []
@@ -12,14 +11,23 @@ def log_wrong_answers_in_text_file():
             file.write(i)
 
 
+def difficulty_level_choice()->str:
+    while True:
+        print("Difficulty Levels: (Easy), (Medium), (Hard)")
+        levels = ["easy", "medium", "hard"]
+        difficulty_level = input("Difficulty: ").strip().lower()
+        if difficulty_level not in levels:
+            continue
+        return difficulty_level
+
+
 def main()->None:
     global correct, wrong
     
     number_of_math_expression = round(float(input("how many math expression do you want enter a number: ")))
-    
+    level_choice = difficulty_level_choice()
     while number_of_math_expression > 0:
-    
-        expression = random_math_expression()
+        expression = random_math_expression(difficulty=level_choice)
     
         print(expression, end=" = ")
     
