@@ -13,8 +13,9 @@ def log_wrong_answers_in_text_file():
 
 def difficulty_level_choice()->str:
     while True:
-        print("Difficulty Levels: (Easy), (Medium), (Hard)")
-        levels = ["easy", "medium", "hard"]
+        # Changed the wording from hard -> difficult
+        print("Difficulty Levels: (Easy), (Medium), (Difficult)")
+        levels = ["easy", "medium", "difficult"]
         difficulty_level = input("Difficulty: ").strip().lower()
         if difficulty_level not in levels:
             continue
@@ -32,7 +33,8 @@ def main()->None:
         print(expression, end=" = ")
     
         user_entered_number = input("")
-    
+        # Bug If user enters empty value expression will be called again
+        # Thus showing new expression
         if not user_entered_number != "":
             print("Empty!")
             print("--------------------")
@@ -50,7 +52,6 @@ def main()->None:
     
     if len(wrong) > 0:
         log_wrong_answers_in_text_file()
-
 
 
 if __name__ == "__main__":

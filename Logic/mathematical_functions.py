@@ -13,15 +13,26 @@ def random_float()->float:
 def random_math_operation()->str:
     return choice(mathemtical_operations)
 
+# created 3 function for 3 levels of math expression
+# Also to make it more readable
+def easy()->str:
+    return f"{random_integer()} {random_math_operation()} {random_integer()}"
+
+
+def medium()->str:
+    return f"({easy()}) {random_math_operation()} ({easy()})"
+
+
+def difficult()->str:
+    return f"{medium()}**2 {random_math_operation()} {medium()} {random_math_operation()} {medium()}"
 
 def random_math_expression(difficulty:str)->str:
     if difficulty == "easy":
-        return f"{random_integer()} {random_math_operation()} {random_integer()}"
+        return easy()
     elif difficulty == "medium":
-        return f"({random_integer()} {random_math_operation()} {random_integer()}) {random_math_operation}\
-            ({random_integer()} {random_math_operation()} {random_integer()})"
-    elif difficulty == "hard":
-        return f"{random_integer()}**2 * {random_integer()} + {random_integer()}"
+        return medium()
+    elif difficulty == "difficult":
+        return difficult()
     else:
         return f"0"
 
