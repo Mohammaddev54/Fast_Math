@@ -21,6 +21,15 @@ def difficulty_level_choice()->str:
             continue
         return difficulty_level
 
+# The FIX
+def user_input(expression):
+    while True:
+        user = input()
+        if not user != "":
+            print("Empty!")
+            print(expression, end=" = ")
+            continue
+        return user
 
 def main()->None:
     global correct, wrong
@@ -31,14 +40,8 @@ def main()->None:
         expression = random_math_expression(difficulty=level_choice)
     
         print(expression, end=" = ")
-    
-        user_entered_number = input("")
-        # Bug If user enters empty value expression will be called again
-        # Thus showing new expression
-        if not user_entered_number != "":
-            print("Empty!")
-            print("--------------------")
-            continue
+        # FIXED: This part may change later on.
+        user_entered_number = user_input(expression=expression)
     
         if check_user_input(expression=expression, user_input=user_entered_number):
             correct += 1
